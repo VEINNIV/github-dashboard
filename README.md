@@ -1,6 +1,6 @@
 # Developer Analytics Dashboard
 
-🚀 **Live Demo:** [https://github-dashboard-hazel.vercel.app/](https://github-dashboard-hazel.vercel.app/)
+**Live Demo:** [https://github-dashboard-hazel.vercel.app/](https://github-dashboard-hazel.vercel.app/)
 
 A premium, highly-aesthetic React/Next.js application that visualizes any GitHub developer's public footprint. Features a custom glassmorphism design system, live autocomplete search mapping against GitHub's API, and interactive data visualization charts.
 
