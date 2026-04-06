@@ -1,8 +1,19 @@
 # Developer Analytics Dashboard
 
-🚀 **Live Demo:** [https://github-dashboard-hazel.vercel.app/](https://github-dashboard-hazel.vercel.app/)
+**Live Demo:** [https://github-dashboard-hazel.vercel.app/](https://github-dashboard-hazel.vercel.app/)
 
 A premium, highly-aesthetic React/Next.js application that visualizes any GitHub developer's public footprint. Features a custom glassmorphism design system, live autocomplete search mapping against GitHub's API, and interactive data visualization charts.
+
+## What You Can Do
+
+This dashboard serves as a comprehensive visual analyzer for GitHub profiles. By simply entering a GitHub username, you can:
+
+- Analyze Programming Languages: Instantly view a graphical breakdown of the primary languages used across a developer's recent repositories.
+- Discover Key Repositories: Browse through the user's most active and public projects, complete with current star ratings and fork statistics.
+- Explore Developer Metrics: Access a summarized view of core stats such as total public repos, follower counts, following lists, and detailed bio information directly from GitHub.
+- Experience a Premium UI: Interact with a seamlessly animated, glassmorphism-inspired interface that makes data consumption highly engaging.
+
+This tool is particularly useful for recruiters reviewing potential tech candidates, developers examining their own open-source footprint, or anyone interested in digging into GitHub statistics without navigating through the standard GitHub interface.
 
 ## Features
 
