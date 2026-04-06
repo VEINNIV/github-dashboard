@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fafafa;
+  --foreground: #111827;
+  --selection: #bfdbfe;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  /* The nice glass-white base */
+  background-image: 
+    radial-gradient(at 0% 0%, hsla(210,100%,92%,1) 0, transparent 50%), 
+    radial-gradient(at 100% 100%, hsla(216,100%,94%,1) 0, transparent 50%),
+    radial-gradient(at 50% 50%, hsla(213,100%,96%,0.5) 0, transparent 50%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+  /* Premium font smoothing */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar for a premium feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(59, 130, 246, 0.15); /* Tailwind blue-500 equivalent but translucent */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 130, 246, 0.3);
+}
+
+::selection {
+  background: var(--selection);
+  color: var(--foreground);
+}
+
+/* Utilities for glassmorphism panels to be incredibly crisp */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+}
