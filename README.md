@@ -1,66 +1,118 @@
-# Developer Analytics Dashboard
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js-16-black?logo=next.js" alt="Next.js" />
+  <img src="https://img.shields.io/badge/React-19-61dafb?logo=react" alt="React" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-4-38bdf8?logo=tailwindcss" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/TypeScript-5-3178c6?logo=typescript" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Framer_Motion-12-ff0055?logo=framer" alt="Framer Motion" />
+  <img src="https://img.shields.io/badge/license-MIT-green" alt="License" />
+</p>
 
-**Live Demo:** [https://github-dashboard-hazel.vercel.app/](https://github-dashboard-hazel.vercel.app/)
+<h1 align="center">Developer Analytics</h1>
 
-A premium, highly-aesthetic React/Next.js application that visualizes any GitHub developer's public footprint. Features a custom glassmorphism design system, live autocomplete search mapping against GitHub's API, and interactive data visualization charts.
+<p align="center">
+  A premium lens into any developer's public GitHub footprint.<br/>
+  Search a username to visualize their code, languages, and core projects.
+</p>
 
-## What You Can Do
+<p align="center">
+  <a href="https://github-dashboard-hazel.vercel.app/"><strong>Live Demo &rarr;</strong></a>
+</p>
 
-This dashboard serves as a comprehensive visual analyzer for GitHub profiles. By simply entering a GitHub username, you can:
+---
 
-- Analyze Programming Languages: Instantly view a graphical breakdown of the primary languages used across a developer's recent repositories.
-- Discover Key Repositories: Browse through the user's most active and public projects, complete with current star ratings and fork statistics.
-- Explore Developer Metrics: Access a summarized view of core stats such as total public repos, follower counts, following lists, and detailed bio information directly from GitHub.
-- Experience a Premium UI: Interact with a seamlessly animated, glassmorphism-inspired interface that makes data consumption highly engaging.
+## Overview
 
-This tool is particularly useful for recruiters reviewing potential tech candidates, developers examining their own open-source footprint, or anyone interested in digging into GitHub statistics without navigating through the standard GitHub interface.
+**Developer Analytics** is a highly-aesthetic React / Next.js application that turns any GitHub username into a rich visual profile. It features a custom glassmorphism design system, live autocomplete search powered by the GitHub API, interactive language charts, and buttery-smooth Framer Motion animations — all wrapped in a fully responsive layout that looks great on every device.
+
+### What You Can Do
+
+| Capability | Description |
+|---|---|
+| **Language Breakdown** | Instantly view a doughnut chart of the primary languages used across a developer's recent repositories. |
+| **Repository Explorer** | Browse the user's most active public projects with star counts, fork counts, and language badges. |
+| **Developer Metrics** | See follower / following counts, total public repos, join date, location, and bio at a glance. |
+| **Live Autocomplete** | Start typing a username and get debounced suggestions with avatars from the GitHub Search API. |
 
 ## Features
 
-- **Live Search Autocomplete**: Instantly queries the GitHub Search APIs as you type (debounced) and previews developer avatars/names in a sleek floating menu.
-- **Glassmorphism UI**: Customized entirely using Tailwind CSS, featuring heavy `backdrop-blur`, mesh-gradient ambient backgrounds, and meticulously crafted soft shadows.
-- **Motion & Fluidity**: Integrates `framer-motion` for smooth layout entrances, staggered micro-animations, and a highly responsive user experience.
-- **Language Charting**: Extracts and aggregates language data from recent repositories and maps them intricately via `chart.js` and `react-chartjs-2`.
-- **Bento-Grid Architecture**: Lays out developer statistics, bios, and codebase activities into a modern, digestable bento layout.
+- **Live Search Autocomplete** — Queries the GitHub Search API as you type (debounced at 1.5 s) and previews developer avatars and names in a floating dropdown.
+- **Glassmorphism UI** — Built entirely with Tailwind CSS: `backdrop-blur`, mesh-gradient backgrounds, and soft layered shadows.
+- **Motion & Fluidity** — Framer Motion powers smooth layout entrances, staggered micro-animations, and spring-based interactions.
+- **Language Charting** — Aggregates language data from recent repositories and renders an interactive doughnut chart via Chart.js.
+- **Bento-Grid Layout** — Developer stats, bio, and repositories are arranged in a modern, digestible bento layout.
+- **Responsive Design** — Fully optimized for desktop, tablet, and mobile viewports.
+- **Accessibility** — Respects `prefers-reduced-motion` and uses semantic HTML with proper alt-text.
+- **Easter Egg** — A hidden "HR Chaos Panel" with a toy blaster and fake database overrides for fun.
 
-## Tech Stack 
+## Tech Stack
 
-- **Framework**: Next.js (App Router), React 19
-- **Styling**: Tailwind CSS (Native utilities + Custom Theme Tokens)
-- **Animation**: Framer Motion
-- **Data Visualization**: Chart.js & react-chartjs-2
-- **Icons**: Lucide React
-- **Data Source**: GitHub REST API
+| Layer | Technology |
+|---|---|
+| Framework | [Next.js 16](https://nextjs.org/) (App Router) + React 19 |
+| Language | TypeScript 5 |
+| Styling | Tailwind CSS 4 (native utilities + custom theme tokens) |
+| Animation | Framer Motion 12 |
+| Data Visualization | Chart.js + react-chartjs-2 |
+| Icons | Lucide React |
+| Data Source | GitHub REST API (unauthenticated) |
+| Deployment | Vercel |
 
 ## Quick Start
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/github-analytics-dashboard.git
-   ```
+```bash
+# 1. Clone
+git clone https://github.com/VEINNIV/github-dashboard.git
 
-2. Navigate to the project directory:
-   ```bash
-   cd github-analytics-dashboard
-   ```
+# 2. Install
+cd github-dashboard
+npm install
 
-3. Install dependencies:
-   ```bash
-   npm install
-   ```
+# 3. Run
+npm run dev
+```
 
-4. Run the development server:
-   ```bash
-   npm run dev
-   ```
+Open [http://localhost:3000](http://localhost:3000) to see the app.
 
-5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
+### Available Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start the development server |
+| `npm run build` | Create a production build |
+| `npm run start` | Serve the production build |
+| `npm run lint` | Run ESLint |
+
+## Project Structure
+
+```
+github-dashboard/
+├── app/
+│   ├── globals.css        # Tailwind theme + glassmorphism utilities
+│   ├── layout.tsx         # Root layout with SEO metadata
+│   └── page.tsx           # Home page (client component)
+├── components/
+│   ├── SearchBar.tsx      # Debounced search with autocomplete dropdown
+│   ├── ProfileCard.tsx    # User avatar, stats, bio, join date
+│   ├── RepoCard.tsx       # Individual repository card
+│   ├── LanguageChart.tsx  # Doughnut chart for language breakdown
+│   ├── LoadingSpinner.tsx # Loading state indicator
+│   ├── ErrorMessage.tsx   # Error display component
+│   └── EasterEggMenu.tsx  # Hidden chaos panel & toy blaster
+├── lib/
+│   └── github.ts          # GitHub API fetch helpers
+├── types/
+│   └── github.ts          # TypeScript interfaces for API responses
+├── public/                # Static assets
+└── package.json
+```
 
 ## Architectural Decisions
 
-- **UX Debouncing Strategy**: To ensure smooth querying and avoid being strictly rate-limited by the GitHub API unauthenticated tier, a custom `useDebounce` hook (1.5-second buffer) is attached to the search input state.
-- **Tailwind Native Integration**: Instead of overloading CSS files, almost the entire custom glassmorphism aesthetic is built utilizing compound Tailwind classes allowing for massive scalability.
-- **Error Boundaries & Fallbacks**: Engineered to gracefully handle API limits, meaning even if the dynamic search drop-down hits a rate-limit ceiling, standard query execution remains intact securely falling back to traditional routing logic.
+- **UX Debouncing** — A custom `useDebounce` hook (1.5 s buffer) prevents excessive API calls on the unauthenticated tier while keeping the search feel snappy.
+- **Tailwind-First Styling** — The entire glassmorphism aesthetic is built with compound Tailwind classes rather than external CSS, making it easy to iterate and scale.
+- **Graceful Degradation** — The autocomplete dropdown swallows rate-limit errors silently so that the primary "Search" button flow always works, even when the search-suggestions endpoint is throttled.
+- **Next.js Image Optimization** — GitHub avatars are served through `next/image` with configured `remotePatterns` for automatic format and size optimization.
 
 ## License
+
 This project is open-source and available under the [MIT License](LICENSE).

@@ -1,52 +1,49 @@
-import { GithubUser, GithubRepo } from "../types/github";
+import { GithubUser, GithubRepo, GithubSearchUser } from "../types/github";
 
 const API_BASE = "https://api.github.com";
 
-// Helper function to handle fetch errors
 const fetchWithErrorHandling = async (url: string) => {
   const res = await fetch(url);
   if (!res.ok) {
     if (res.status === 404) {
-      throw new Error("User not found");
+      throw new Error("User not found. Double-check the username and try again.");
     }
     if (res.status === 403) {
-      throw new Error("Rate limit exceeded. Please try again later.");
+      throw new Error(
+        "GitHub API rate limit exceeded. Please wait a minute and try again."
+      );
     }
-    throw new Error("Failed to fetch data");
+    throw new Error(`Failed to fetch data (HTTP ${res.status}).`);
   }
   return res.json();
 };
 
-/**
- * Fetches user profile data from GitHub
- */
 export const fetchUser = async (username: string): Promise<GithubUser> => {
-  const url = `${API_BASE}/users/${username}`;
-  return fetchWithErrorHandling(url);
+  return fetchWithErrorHandling(`${API_BASE}/users/${username}`);
 };
 
-/**
- * Fetches user repositories from GitHub (max 100, sorted by recently updated)
- */
 export const fetchRepos = async (username: string): Promise<GithubRepo[]> => {
-  const url = `${API_BASE}/users/${username}/repos?per_page=100&sort=updated`;
-  return fetchWithErrorHandling(url);
+  return fetchWithErrorHandling(
+    `${API_BASE}/users/${username}/repos?per_page=100&sort=updated`
+  );
 };
 
 /**
- * Validates and searches users for the live autocomplete dropdown.
- * Gracefully handles errors (e.g. rate limit) by returning an empty list.
+ * Searches users for the live autocomplete dropdown.
+ * Gracefully returns an empty list on any failure (e.g. rate-limit).
  */
-export const searchUsers = async (query: string): Promise<any[]> => {
+export const searchUsers = async (
+  query: string
+): Promise<GithubSearchUser[]> => {
   if (!query) return [];
-  const url = `${API_BASE}/search/users?q=${encodeURIComponent(query)}&per_page=5`;
   try {
-    const res = await fetch(url);
+    const res = await fetch(
+      `${API_BASE}/search/users?q=${encodeURIComponent(query)}&per_page=5`
+    );
     if (!res.ok) return [];
     const data = await res.json();
-    return data.items || [];
-  } catch (error) {
-    console.error("Search API failed:", error);
+    return data.items ?? [];
+  } catch {
     return [];
   }
 };
